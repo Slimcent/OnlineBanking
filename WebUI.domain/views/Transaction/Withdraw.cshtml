@@ -1,0 +1,26 @@
+﻿@model WebUI.domain.Models.TransactionModel.WithdrawalViewModel
+
+@{ ViewData["Title"] = "Customer-Withdrawal-Dashboard";
+    Layout = "_LayoutDashboard";
+}
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="col-md-12">
+            <form method="post">
+                <h4>Withdraw Money</h4>
+                <br />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group col-xl-4 ">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" />
+                </div>
+                <br />
+                <div>
+                    <button type="submit" class="btn-primary fadeIn fourth">Withdraw</button>
+                    <button class="btn btn-primary fadeIn fourth" asp-action="CustomerHome" role="button" asp-controller="Dashboard">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model WebUI.domain.Models.TransactionModel.DepositViewModel
+
+@{ ViewData["Title"] = "Customer-Deposit-Dashboard";
+    Layout = "_LayoutDashboard";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head></head>
+<body>
+    <div>
+        <form method="post" asp-action="Deposit" asp-controller="Transaction">
+            <h4>Deposit Money</h4>
+            <br />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group col-xl-4 ">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" id="amount" class="amount form-control" />
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="btnDeposit btn-primary fadeIn fourth">Deposit</button>
+                <a class=" btn btn-primary" asp-action="CustomerHome" asp-controller="Dashboard" role="button">Cancel</a>
+                <span class="error"></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/Ajax/Deposit.js"></script>
+</body>
+</html>
+
+

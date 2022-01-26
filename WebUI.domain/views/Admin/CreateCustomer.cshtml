@@ -1,0 +1,84 @@
+﻿@model WebUI.domain.Models.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Create-Customer-Page";
+    Layout = "_LayoutDashboard";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <form asp-action="CreateCustomer" asp-controller="Admin" method="post" class="form">
+        <div asp-validation-summary="ModelOnly"></div>
+        <h1>Customer Creation Form</h1>
+        @*<div class="error text-danger"  asp-validation-summary="All"></div>*@
+        <div class="form-group col-xl-4">
+
+            <label asp-for="FirstName">Enter First Name </label>
+            <input asp-for="FirstName" class="firstName form-control" />
+            <span asp-validation-for="FirstName" class="error text-danger"></span>
+            <span id="firstNameError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="LastName">Enter Last Name </label>
+            <input asp-for="LastName" class="lastName form-control" />
+            <span asp-validation-for="LastName" class="error text-danger"></span>
+            <span id="lastNameError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="UserName">Enter UserName </label>
+            <input asp-for="UserName" class="userName form-control" />
+            <span asp-validation-for="UserName" class="error text-danger"></span>
+            <span id="userNameError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="Email">Enter Email </label>
+            <input asp-for="Email" class="email form-control" />
+            <span asp-validation-for="Email" class="error text-danger"></span>
+            <span id="emailError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="Birthday">Enter Date Of Birth </label>
+            <input asp-for="Birthday" type="date" class="birthday form-control" />
+            <span asp-validation-for="Birthday" class="error text-danger"></span>
+            <span id="birthdayError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="Gender">Select Gender</label>
+            <select asp-for="Gender" class="gender">
+                <option value="">Select A Gender </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <span asp-validation-for="Gender" class="error text-danger"></span>
+            <span id="genderError"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="AccountType">Choose Desired Account Type</label>
+            <select asp-for="AccountType" class="accounType">
+                <option value="">Select An Account Type </option>
+                <option value="saving">Savings</option>
+                <option value="student">Student</option>
+            </select>
+            <span asp-validation-for="AccountType" class="error text-danger"></span>
+            <span id="accountTypeError"></span>
+        </div>
+
+        <div>
+            <button class=" btn btn-primary" type="submit">Create</button>
+        </div>
+
+    </form>
+    <script type="text/javascript" src="~/js/RegisterError.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/jquery/Error/ErrorHide.js"></script>
+    <script type="text/javascript" src="~/jquery/Validation/Validate.js"></script>
+</body>
+</html>
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

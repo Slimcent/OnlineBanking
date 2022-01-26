@@ -1,0 +1,29 @@
+﻿.form {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);   
+}
+
+.form h1{
+    margin-top:40px;
+    margin-left:100px;
+}
+
+
+.form-group,
+.btn-primary{
+    margin-left: 100px;
+    margin-top:10px;
+}
+
+.btn-primary{
+    margin-bottom:20px;
+}
+body {
+    background-image: url('~/img/Register.jpg');
+    background-position: center;
+    background-color: rgba(77, 77, 235, 0.1);
+}
+

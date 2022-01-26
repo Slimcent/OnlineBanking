@@ -1,0 +1,73 @@
+﻿@model WebUI.domain.Models.DashBoardViewModel
+
+@{ 
+    ViewData["Title"] = "Customer-Dashboard";
+    Layout = "_LayoutDashboard";
+}
+
+<div>
+    @if (TempData["DepositSuccess"] != null)
+    {
+        <h3 class="text-danger">@TempData["DepositSuccess"]</h3>
+    }
+    @if (TempData["WithdrawalSuccess"] != null)
+    {
+        <h3 class="text-danger">@TempData["WithdrawalSuccess"]</h3>
+    }
+    @if (TempData["TransferSuccess"] != null)
+    {
+        <h3 class="text-danger">@TempData["TransferSuccess"]</h3>
+    }
+</div>
+
+
+<div>
+    <div>
+        <h3><span>@ViewData["Greeting"]</span> @Model.User.FullName</h3>
+    </div>
+    <h4>Email @Model.User.Email</h4>
+    <h4>Account Number @Model.Account.AccountNumber</h4>
+    <h4>Account Balance @Model.Account.Balance</h4>
+</div>
+
+<div>
+    @if (Model.Transaction.ToList().Count >= 1)
+    {
+    <div>
+        <h3>All Transactions</h3>
+        @if (Model.Transaction.ToList().Count == 1)
+        {
+            <h5>Only @Model.Transaction.ToList().Count() Transaction </h5>
+        }
+        else
+        {
+            <h5>Total Transactions &nbsp; = &nbsp; @Model.Transaction.ToList().Count() </h5>
+        }
+
+    </div>
+        <table class="table table-sm table-bordered">
+            <tr>
+                @*<th>User ID</th>*@
+                <th>Amount</th>
+                <th>Transaction Type</th>
+                <th>Time</th>
+            </tr>
+
+            @foreach (var transaction in Model.Transaction)
+            {
+                <tr>
+                    @*<td>@transaction.UserId</td>*@
+                    <td>@transaction.Amount</td>
+                    <td>@transaction.TransactionTypes</td>
+                    <td>@transaction.TimeStamp</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <br />
+        <h2>No Transactions yet</h2>
+    }
+
+</div>

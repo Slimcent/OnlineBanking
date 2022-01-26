@@ -1,0 +1,135 @@
+﻿@model WebUI.domain.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "User-Creation-Form";
+    Layout = "_LayoutDashboard";
+}
+
+<html>
+<head>
+    <style>
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            cursor: pointer;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        li {
+            list-style: none
+        }
+
+        .hide-password {
+            display: none
+        }
+    </style>
+    <link href="~/lib/font-awesome/css/all.css" />
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="~/css/Login.css" />
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="col-md-12">
+                <form method="post">
+                    <h1>Create a new User</h1>
+                    @*<div asp-validation-summary="All" class="error text-danger"></div>*@
+                    <div class="form-group col-xl-4">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="firstName form-control" />
+                        <span asp-validation-for="FirstName" class="error text-danger" id="firstNameError"></span>
+                    </div>
+                    <div class="form-group col-xl-4 ">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="lastName form-control" />
+                        <span asp-validation-for="LastName" class="error text-danger" id="lastNameError"></span>
+                    </div>
+                    <div class="form-group col-xl-4 ">
+                        <label asp-for="UserName"></label>
+                        <input asp-for="UserName" class="userName form-control" />
+                        <span asp-validation-for="UserName" class="error text-danger" id="userNameError"></span>
+                    </div>
+                    <div class="form-group col-xl-4 ">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="email form-control" />
+                        <span asp-validation-for="Email" class="error text-danger" id="emailError"></span>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input id="password-field" type="password" class="form-control" name="password" value="secret">
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <input id="password" type="password" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" id="password" placeholder="Password" required>
+                            <div class="input-group-append col-md-6">
+                                <span class="input-group-text">
+                                    <i id="eye" class="far fa-eye-slash"></i>
+                                </span>
+                            </div>
+                        </div>*@
+
+
+                    <div class="form-group col-xl-4">
+                        <label asp-for="Birthday">Enter Date Of Birth </label>
+                        <input asp-for="Birthday" type="date" class="birthday form-control" name="" />
+                        <span asp-validation-for="Birthday" class="error text-danger" id="birthdayError"></span>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn-primary fadeIn fourth">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/jquery/Error/ErrorHide.js"></script>
+    <script type="text/javascript" src="~/jquery/Validation/Validate.js"></script>
+    <script type="text/javascript" src="~/lib/font-awesome/js/all.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".toggle-password").click(function () {
+                //$("p").hide();
+                //alert("Check");
+
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    $(this).toggleClass("fa-eye fa-eye");
+                    input.attr("type", "password");
+                }
+            });
+        });
+
+
+        function showHidePwd() {
+            var input = document.getElementById("password");
+            if (input.type === "password") {
+                input.type = "text";
+                document.getElementById("eye").className = "far fa-eye";
+            } else {
+                input.type = "password";
+                document.getElementById("eye").className = "far fa-eye-slash";
+            }
+        }
+    </script>
+</body>
+</html>
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

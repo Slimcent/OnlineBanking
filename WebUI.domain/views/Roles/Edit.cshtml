@@ -1,0 +1,47 @@
+﻿@model WebUI.domain.Models.EditRoleViewModel
+
+@{ 
+    ViewData["Title"] = "Role-Edit-Form";
+    Layout = null;
+}
+
+<h3>Edit this Role</h3>
+<form method="post" asp-action="Edit" asp-controller="Roles">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="form-group col-xl-4">
+        <label asp-for="RoleName">Role Name</label>
+        <input asp-for="RoleName" name="roleName" class="form-control">
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+    <div>
+        <button class="btn btn-info">Edit Role</button>
+        <a asp-action="Index" class="btn btn-primary">Cancel</a>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Users Associaed with this Role</h2>
+        </div>
+        <div class="card-body">
+            @if (Model.Users.Any())
+            {
+                foreach (var user in Model.Users)
+                {
+                    <h5 class="card-title">@user</h5>
+                }
+            }
+            else
+            {
+                <h5 class="card-title">None for now</h5>
+            }
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary ">Add Users</a>
+            <a class="btn btn-primary">Remove Users</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

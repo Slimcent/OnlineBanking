@@ -1,0 +1,22 @@
+﻿@model WebUI.domain.Models.CustomerViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+    <link rel="stylesheet" href="/css/Thanks.css" />
+</head>
+<body class="container">
+    <div class="header">
+        <img src="~/img/img-2.png" class="view-image" />
+        <div>
+            <h1>Thank You, @Model.FirstName.ToUpper() For Registering </h1>
+            Click <a asp-action="LogIn">HERE</a> To Login And Start The Most Awesome Experience Of Your Life
+        </div>
+    </div>
+
+</body>
+</html>

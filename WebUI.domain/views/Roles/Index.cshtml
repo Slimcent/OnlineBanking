@@ -1,0 +1,71 @@
+﻿@model List<OnlineBanking.Domain.Entities.AppRole>
+
+@{ 
+    ViewData["Title"] = "Role- Creation-Dashboard";
+    Layout = "_LayoutDashboard";
+}
+
+<div>
+    <a class="btn btn-primary" asp-action="Create">Create A new Role</a>
+</div>
+<div asp-validation-summary="ModelOnly"></div>
+<body>
+    <div>
+        <table class=" table table-striped">
+            <thead>
+                <tr>
+                    <th>Role Name</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td>@role.CreatedBy</td>
+                        <td>@role.CreatedAt</td>
+                        <td><a class="btn btn-primary" asp-action="Edit" asp-route-id="@role.Id">Edit</a></td>
+                        <td>
+                            <form asp-action="Delete" method="post" asp-route-id="@role.Id">
+                                <span id="confirmDeleteSpan_@role.Id" style="display:none;">
+                                    <span>Confirm Delete ?</span>
+                                    <button type="submit" class="btn btn-danger">Yes</button>
+                                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@role.Id', false)">
+                                        No
+                                    </a>
+                                </span>
+                                <span id="deleteSpan_@role.Id">
+                                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@role.Id', true)">
+                                        Delete
+                                    </a>
+                                </span>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a class="btn btn-primary" asp-action="Index" asp-controller="UserRoles">Manage Roles</a>
+        </div>
+    </div>
+
+    <script>
+        function confirmDelete(uniqueId, istrue) {
+            var deleteSpan = 'deleteSpan_' + uniqueId;
+            var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+            if (istrue) {
+                $('#' + deleteSpan).hide();
+                $('#' + confirmDeleteSpan).show();
+            } else {
+                $('#' + deleteSpan).show();
+                $('#' + confirmDeleteSpan).hide();
+            }
+        }
+    </script>
+</body>

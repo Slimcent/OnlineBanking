@@ -1,0 +1,318 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background: #7d0552;
+    top: 0;
+    color: white;
+}
+
+.left h3 {
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 30px;
+    margin-top: 14px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.left span {
+    color: #fc7b04;
+}
+
+.logout {
+    padding: 7px;
+    background: #fc7b04;
+    float: right;
+    margin-top: -25px;
+    margin-right: 30px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    transition: .5s;
+    transition-property: background;
+}
+
+    .logout:hover {
+        background: #e71d82;
+    }
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    margin-top: 60px;
+}
+
+#menu {
+    display: none;
+}
+
+#side {
+    display: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 230px;
+    background: #fc7b04;
+    position: fixed;
+    padding-top: 30px;
+    left: 0px;
+    transition: .5s;
+    margin-top: -10px;
+}
+
+    .sidebar ul li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-size: 18px;
+        line-height: 45px;
+        padding-left: 40px;
+        padding-top: -30px;
+        border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+        transition: .5s;
+    }
+
+    .sidebar ul a i {
+        margin-right: 15px;
+    }
+
+ul li:hover a {
+    padding-left: 20px;
+    border-right: 3px solid #fc7b04;
+    background: #7d0552;
+    border-bottom: 1px solid white;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 15px;
+    transition: .5s;
+}
+
+.menu-btn {
+    /* height: 25px;
+    width: 25px; */
+    /* background: coral;
+    cursor: pointer;
+    display: block;
+    padding-left: 240px;
+    padding-top: -120px;
+    position: fixed;
+    user-select: none;
+    margin-top: -40px; */
+    background: white;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    display: block;
+    position: fixed;
+    user-select: none;
+    margin-top: -49px;
+    margin-left: 240px;
+}
+
+    .menu-btn .navicon {
+        margin-top: 12px;
+        margin-left: 3px;
+        background: #fc7b04;
+        display: block;
+        height: 2px;
+        position: fixed;
+        transition: background .5s ease-out;
+        width: 18px;
+    }
+
+        .menu-btn .navicon:before,
+        .menu-btn .navicon:after {
+            background: #fc7b04;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+
+        .menu-btn .navicon:before {
+            top: 5px;
+        }
+
+        .menu-btn .navicon:after {
+            top: -5px;
+        }
+
+#menu:checked ~ .sidebar {
+    left: -150px;
+}
+
+#menu:checked ~ .content {
+    margin-left: 90px;
+    transition: .5s;
+}
+
+#menu:checked ~ .menu-btn .navicon {
+    background: transparent;
+}
+
+    #menu:checked ~ .menu-btn .navicon:before {
+        transform: rotate(-45deg);
+    }
+
+    #menu:checked ~ .menu-btn .navicon:after {
+        transform: rotate(45deg);
+    }
+
+#menu:checked ~ .menu-btn:not(.steps) .navicon:before,
+#menu:checked ~ .menu-btn:not(.steps) .navicon:after {
+    top: 0;
+}
+
+#menu:checked ~ .sidebar a {
+    color: transparent;
+}
+
+#menu:checked ~ .sidebar a {
+    height: 60px;
+    line-height: 60px;
+}
+
+    #menu:checked ~ .sidebar a .fa {
+        display: block;
+        font-size: 23px;
+        margin-left: 140px;
+        color: white;
+        position: absolute;
+        margin-top: 18px;
+    }
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: none;
+    }
+
+    header {
+        height: 45px;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .logout {
+        margin-top: 9px;
+        font-size: 14px;
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    .sidebar {
+        margin-left: -230px;
+        transition: .5s;
+        margin-top: -15px;
+    }
+
+    .content {
+        margin-left: 0px;
+        transition: .5s;
+        padding-left: -10px;
+        padding-right: -10px;
+    }
+
+    .side-btn {
+        background: white;
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+        display: block;
+        position: fixed;
+        user-select: none;
+        margin-top: -49px;
+        margin-left: 30px;
+    }
+
+        .side-btn:hover {
+            background: coral;
+        }
+
+        .side-btn .sideicon {
+            margin-top: 12px;
+            margin-left: 4px;
+            background: black;
+            display: block;
+            height: 2px;
+            position: fixed;
+            transition: background .5s ease-out;
+            width: 18px;
+        }
+
+            .side-btn .sideicon:before,
+            .side-btn .sideicon:after {
+                background: black;
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                transition: all .2s ease-out;
+                width: 100%;
+            }
+
+            .side-btn .sideicon:before {
+                top: 5px;
+            }
+
+            .side-btn .sideicon:after {
+                top: -5px;
+            }
+
+    #side:checked ~ .side-btn .sideicon {
+        background: transparent;
+    }
+
+        #side:checked ~ .side-btn .sideicon:before {
+            transform: rotate(-45deg);
+        }
+
+        #side:checked ~ .side-btn .sideicon:after {
+            transform: rotate(45deg);
+        }
+
+    #side:checked ~ .side-btn:not(.steps) .sideicon:before,
+    #side:checked ~ .side-btn:not(.steps) .sideicon:after {
+        top: 0;
+    }
+
+    #side:checked ~ .sidebar {
+        left: 230px;
+        transition: .5s;
+    }
+
+    #menu:checked ~ .content {
+        margin-left: 0px;
+        transition: .5s;
+    }
+
+    #menu:checked ~ .sidebar a {
+        padding-left: 65px;
+        color: white;
+    }
+
+        #menu:checked ~ .sidebar a .fa {
+            right: 170px;
+            font-size: 18px;
+            padding-top: 5px;
+        }
+}

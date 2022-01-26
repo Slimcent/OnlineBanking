@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/Dashboard/dashboard.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <div class="left">
+            <a asp-controller="Account" asp-action="Index"><h3>Slimcent <span>Sidebar</span></h3></a>
+        </div>
+        <div class="right">
+            <a  asp-controller="Account" asp-action="Logout" class="btn btn-danger logout">Logout</a>
+        </div>
+    </header>
+
+    <div id="wrapper">
+        <input type="checkbox" id="menu" name="">
+        <input type="checkbox" id="side" name="">
+        <label class="menu-btn" for="menu"><span class="navicon"></span></label>
+        <label class="side-btn" for="side"><span class="sideicon"></span></label>
+        <nav id="sidebar" class="sidebar">
+            <ul>
+                @if (User.IsInRole("Customer"))
+                {
+                    <li><a asp-action="CustomerHome" asp-controller="Dashboard"><i class="fa fa-qrcode"></i>Dashboard</a></li>
+                    <li><a asp-action="Deposit" asp-controller="Transaction"><i class="fa fa-link"></i>Deposit</a></li>
+                    <li><a asp-action="Withdraw" asp-controller="Transaction"><i class="fa fa-stream"></i>Withdraw</a></li>
+                    <li><a asp-action="Transfer" asp-controller="Transaction"><i class="fa fa-sliders-h"></i>Transfer</a></li>
+                    <li><a href=""><i class="fa fa-envelope"></i>Transaaction History</a></li>
+                }
+
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    <li><a asp-action="Index" asp-controller="Admin"><i class="fa fa-qrcode"></i>Dashboard</a></li>
+                    <li><a asp-action="CreateUser" asp-controller="Admin"><i class="fa fa-qrcode"></i>Create User</a></li>
+                    <li><a asp-action="CreateCustomer" asp-controller="Admin"><i class="fa fa-link"></i>Create Customer</a></li>
+                    <li><a asp-action="Index" asp-controller="Roles"><i class="fa fa-link"></i>View Roles</a></li>
+                    <li><a asp-action="Create" asp-controller="Roles"><i class="fa fa-stream"></i>Create Role</a></li>
+                    <li><a asp-action="Index" asp-controller="UserRoles"><i class="fa fa-sliders-h"></i>Manage User Roles</a></li>
+                    <li><a href=""><i class="fa fa-envelope"></i>Transaaction History</a></li>
+                }
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div class="content">
+        @RenderBody()
+        </div>
+       
+    </div>
+    
+    <script type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/font-awesome/js/all.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

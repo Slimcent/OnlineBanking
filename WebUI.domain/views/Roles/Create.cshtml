@@ -1,0 +1,39 @@
+﻿@model WebUI.domain.Models.RolesVIewModel
+
+@{
+    ViewData["Title"] = "Role-Creation-Form";
+    Layout = "_LayoutDashboard";
+    {await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+        @*<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />*@
+    </head>
+    <body>
+        <form method="post" asp-action="Create" asp-controller="Roles">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="RoleName">Role Name</label>
+                <input asp-for="RoleName" name="roleName" class="form-control">
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+
+            <div >
+                <label asp-for="CreatedBy">Created By</label>
+                <input asp-for="CreatedBy" name="createdBy" class="form-control">
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <br />
+            <div>
+                <button class="btn btn-info">Create New Role</button>
+            </div>
+        </form>
+    </body>
+</html>
+
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

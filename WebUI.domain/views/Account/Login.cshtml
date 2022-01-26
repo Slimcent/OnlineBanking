@@ -1,0 +1,41 @@
+﻿@model WebUI.domain.Models.LoginViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+@{ ViewData["Title"] = "Login-Form"; }
+
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+<body>
+    <div class="form-container">
+        <form method="post" asp-controller="Account" asp-action="Login">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" />
+            </div>
+            <div>
+                <button class="btn" type="submit">Log In</button>
+
+            </div>
+        </form>
+
+        <div>
+            <a href=" #">Forgot Password?</a>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

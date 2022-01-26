@@ -1,0 +1,15 @@
+﻿.form-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    margin-top :200px;
+}
+
+label{
+    width:100%;
+}
+
+input{
+    margin-bottom:10px;
+}

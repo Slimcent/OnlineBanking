@@ -1,0 +1,66 @@
+﻿@model WebUI.domain.Models.UserViewModel
+
+@{ ViewData["Title"] = "Registration-Form"; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/Register.css" />
+</head>
+
+<body>
+    <form asp-action="Register" asp-controller="Home" method="post" class="form">
+        <div asp-validation-summary="ModelOnly"></div>
+        <h1>Registration Form</h1>
+        <div class="error" asp-validation-summary="All"></div>
+
+        <div class="form-group col-xl-4">
+            <label asp-for="FirstName">Enter First Name </label>
+            <input asp-for="FirstName" class="firstName form-control" name="firstName" />
+            <span class="error text-danger" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="LastName">Enter Last Name </label>
+            <input asp-for="LastName" class="form-control" name="lastName" />
+            <span class="error text-danger" asp-validation-for="LastName"></span>
+        </div>
+        <div class="form-group col-xl-4">
+            <label asp-for="Birthday">Enter Date Of Birth </label>
+            <input asp-for="Birthday" type="date" class="form-control" name="birthday" />
+            <span class="error text-danger" asp-validation-for="Birthday"></span>
+        </div>
+        <div>
+            <label>Password</label>
+            <input />
+        </div>
+        <div>
+            <p>This is a paragraph</p>
+        </div>
+        <div>
+            <button class="btn1 btn btn-primary">Hide</button>
+            <button type="submit" class="btn-primary">Click To Go To The Next Page</button>
+        </div>
+    </form>
+    <script type="text/javascript" src="~/js/RegisterError.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btn1").click(function () {
+                $("p").hide();
+            });
+            //$("form").submit(function (e) {
+            //    e.preventDefault();
+            //});
+            $(".firstName").focus(function () {
+                $("p").hide();
+                $(".error").hide();
+            });
+        });
+    </script>
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,29 @@
+﻿@*@model WebUI.domain.Models.DashBoardViewModel*@
+@*@model OnlineBanking.Domain.Entities.Account;*@
+<!--@{ ViewData["Title"] = "User-Dashboard"; }
+
+@{
+    Layout = null;
+}
+
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+}
+<h1>Hello @Model.User.UserName </h1>
+
+@if (User.IsInRole("Customer"))
+{
+    <h3>Your Account Number is @Model.Account.AccountNumber </h3>
+
+    <h2>Your Balance Is @Model.Account.Balance</h2>
+
+    <a class="btn btn-primary" asp-action="Deposit" asp-controller="Transaction" asp-route-id="@Model.Account.Balance">
+        Deposit
+    </a>
+
+    <a asp-action="Withdraw" asp-controller="Transaction" class="btn btn-primary">Withdraw</a>
+    <a asp-action="Transfer" asp-controller="Transaction" class=" btn btn-primary">Transfer</a>
+}-->
+

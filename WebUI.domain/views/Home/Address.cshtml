@@ -1,0 +1,50 @@
+﻿@*@model WebUI.domain.Models.AddressViewModel*@
+
+@model OnlineBanking.Domain.Entities.Address
+
+@{ ViewData["Title"] = "Address-Form"; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/Thanks.css" />
+</head>
+<body class="container">
+    <h3>Complete your Registration</h3>
+    <div>
+        <form asp-action="Address" asp-controller="Home" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <h1>Address Form</h1>
+            <div class="form-group col-xl-4">
+                <label asp-for="PlotNo">Enter Plot No:</label>
+                <input asp-for="PlotNo" class="form-control" />
+                <span asp-validation-for="PlotNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-xl-4">
+                <label asp-for="StreetName">Enter Strret Name:</label>
+                <input asp-for="StreetName" class="form-control" />
+                <span asp-validation-for="StreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-xl-4">
+                <label asp-for="City">Provide Your City</label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-xl-4">
+                <label asp-for="Nationality">Enter Nationality </label>
+                <input asp-for="Nationality" type="text" class="form-control" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
